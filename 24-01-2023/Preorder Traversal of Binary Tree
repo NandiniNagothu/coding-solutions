@@ -1,0 +1,36 @@
+Problem :
+    Given a binary tree, find its preorder traversal.
+    
+Example :
+
+Input:
+       6
+     /   \
+    3     2
+     \   / 
+      1  2
+      
+Output: 6 3 1 2 2 
+
+Java Program using Recursion:
+
+Class BinaryNode {
+  BinaryNode left;
+  BinaryNode right;
+  int data;
+  
+  void BinaryNode(int data){
+        this.data=data;
+  }
+}
+Class PreOrder(BinaryNode root){
+    public static void main(String[] args){
+         if(root==null){
+            return ;
+         }
+         
+         System.out.println(root.data);
+         PreOrder(root.left);
+         InOrder(root.right);
+    }
+}
