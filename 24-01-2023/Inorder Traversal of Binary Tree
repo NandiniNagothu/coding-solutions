@@ -1,0 +1,34 @@
+Problem :
+    Given a Binary Tree, find the In-Order Traversal of it.
+    
+Example :
+
+Input:
+        10
+     /      \ 
+    20       30 
+  /    \    /
+ 40    60  50
+ 
+Output: 40 20 60 10 50 30
+ Java Program Using Recursion:
+Class BinaryNode {
+  BinaryNode left;
+  BinaryNode right;
+  int data;
+  
+  void BinaryNode(int data){
+        this.data=data;
+  }
+}
+Class InOrder(BinaryNode root){
+    public static void main(String[] args){
+         if(root==null){
+            return ;
+         }
+         InOrder(root.left);
+         System.out.println(root.data);
+         InOrder(root.right);
+    }
+}
+          
