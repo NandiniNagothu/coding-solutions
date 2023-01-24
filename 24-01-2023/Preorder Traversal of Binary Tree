@@ -31,6 +31,6 @@ Class PreOrder(BinaryNode root){
          
          System.out.println(root.data);
          PreOrder(root.left);
-         InOrder(root.right);
+         PreOrder(root.right);
     }
 }
