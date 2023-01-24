@@ -19,7 +19,7 @@ Class BinaryNode {
   BinaryNode right;
   int data;
   
-  void BinaryNode(int data){
+  BinaryNode(int data){
         this.data=data;
   }
 }
