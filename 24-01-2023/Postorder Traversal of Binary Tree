@@ -19,7 +19,7 @@ Class BinaryNode {
   BinaryNode right;
   int data;
   
-  void BinaryNode(int data){
+  BinaryNode(int data){
         this.data=data;
   }
 }
@@ -29,7 +29,7 @@ Class PostOrder(BinaryNode root){
             return ;
          }
          PostOrder(root.left);
-         System.out.println(root.data);
          PostOrder(root.right);
+         System.out.println(root.data);
     }
 }
