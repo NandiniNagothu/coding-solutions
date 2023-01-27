@@ -1,0 +1,33 @@
+Given a binary tree, determine if it is height-balanced
+
+Example:
+Input: root = [3,9,20,null,null,15,7]
+Output: true
+
+class Solution {
+    int diff;
+    public boolean isBalanced(TreeNode root) {
+        if(root==null){
+            return true;
+        }
+        int left = height(root.left);
+        int right = height(root.right);
+        if(isBalanced(root.left) && isBalanced(root.right)){
+            diff=left-right;
+            if(diff==0 || diff==1 || diff==-1){
+                return true;
+            }
+        }
+        return false;
+    }
+    public int height(TreeNode node){
+        if(node==null){
+            return 0;
+        }
+        int lefthei = height(node.left);
+        int righthei = height(node.right);
+        return Math.max(lefthei, righthei)+1;
+    }
+    
+        
+}
