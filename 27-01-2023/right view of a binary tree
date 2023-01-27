@@ -1,0 +1,32 @@
+Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+Example:
+Input: root = [1,2,3,null,5,null,4]
+Output: [1,3,4]
+
+class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        if(root==null){
+            return list;
+        }
+        while(!q.isEmpty()){
+            int size = q.size();
+            for(int i=0;i<size;i++){
+                TreeNode c = q.poll();
+                if(i==size-1){
+                    list.add(c.val);
+                }
+                if(c.left!=null){
+                    q.add(c.left);
+                }
+                if(c.right!=null){
+                    q.add(c.right);
+                }
+            }
+        }
+        return list;
+    }
+}
