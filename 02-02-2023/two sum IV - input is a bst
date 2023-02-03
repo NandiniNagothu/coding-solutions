@@ -1,0 +1,76 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+ class bstIterator {
+     Stack<TreeNode> s = new Stack<>();
+     boolean forw;
+    public bstIterator(TreeNode root, boolean forw){
+        this.forw=forw;
+        pushAll(root);
+    }
+    public void pushAll(TreeNode root)
+    {
+        while(root!=null){
+            s.push(root);
+            if(forw){
+                root=root.left;
+            }
+            else{
+                root=root.right;
+            }
+        }
+    }
+    public boolean hasNext(){
+        if(s.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+    public int next(){
+        TreeNode temp = s.pop();
+        if(forw){
+            pushAll(temp.right);
+        }
+        else{
+            pushAll(temp.left);
+        }
+        System.out.print(temp.val);
+        return temp.val;
+    }
+ }
+class Solution {
+    public boolean findTarget(TreeNode root, int k) {
+        if(root==null){
+            return false;
+        }
+        TreeNode temp=root;
+        bstIterator l = new bstIterator(temp,true);
+        bstIterator r = new bstIterator(temp,false);
+        int i=l.next();
+        int j=r.next();
+        while(l.hasNext() && r.hasNext() && i<j){
+            if(i+j==k){
+                return true;
+            }
+            if(i+j>k){
+                j=r.next();
+            }
+            if(i+j<k){
+                i=l.next();
+            }
+        }
+        return false;
+    }
+}
